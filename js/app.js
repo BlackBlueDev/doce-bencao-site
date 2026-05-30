@@ -7,9 +7,9 @@ const DEFAULT_WHATSAPP_MESSAGE =
   "Olá! Vim pelo site da Doce Benção e gostaria de consultar os sabores disponíveis.";
 
 const categoryImages = {
-  "Dudu Gourmet": "assets/produto-dudu-gourmet-real.png",
-  "Dudu Tradicional": "assets/produto-dudu-tradicional-real.png",
-  Sobremesas: "assets/produto-sobremesas-reais.png"
+  "Dudu Gourmet": "assets/produtos/produto-dudu-gourmet-real.png",
+  "Dudu Tradicional": "assets/produtos/produto-dudu-tradicional-real.png",
+  Sobremesas: "assets/produtos/produto-sobremesas-reais.png"
 };
 
 const products = [
