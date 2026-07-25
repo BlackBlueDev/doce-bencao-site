@@ -7,9 +7,9 @@ const DEFAULT_WHATSAPP_MESSAGE =
   "Olá! Vim pelo site da Doce Benção e gostaria de consultar os sabores disponíveis.";
 
 const categoryImages = {
-  "Dudu Gourmet": "assets/produtos/produto-dudu-gourmet-real.png",
-  "Dudu Tradicional": "assets/produtos/produto-dudu-tradicional-real.png",
-  Sobremesas: "assets/produtos/produto-sobremesas-reais.png"
+  "Dudu Gourmet": "assets/produtos/produto-dudu-gourmet-real.webp",
+  "Dudu Tradicional": "assets/produtos/produto-dudu-tradicional-real.webp",
+  Sobremesas: "assets/produtos/produto-sobremesas-reais.webp"
 };
 
 const products = [
@@ -136,7 +136,8 @@ const products = [
 ];
 
 const state = {
-  category: "Todos"
+  category: "Todos",
+  cart: {} // productId: quantity
 };
 
 const productGrid = document.querySelector("#productGrid");
@@ -163,10 +164,10 @@ function renderProducts() {
 
   productGrid.innerHTML = currentProducts()
     .map((product) => {
-      const message = `Olá! Vim pelo site da Doce Benção e gostaria de consultar a disponibilidade de ${product.name} (${product.category}).`;
+      const qty = state.cart[product.id] || 0;
       return `
         <article class="product-card ${product.accent}">
-          <img src="${categoryImages[product.category]}" alt="${product.name} - ${product.category}">
+          <img src="${categoryImages[product.category]}" alt="${product.name} - ${product.category}" loading="lazy">
           <div class="product-body">
             <div class="product-topline">
               <span class="product-category">${product.category}</span>
@@ -174,14 +175,125 @@ function renderProducts() {
             </div>
             <h3>${product.name}</h3>
             <p>${product.description}</p>
-            <a class="consult-link" href="${whatsappUrl(message)}" target="_blank" rel="noopener">
-              Consultar no WhatsApp
-            </a>
+            <div class="qty-selector">
+              <button class="qty-btn minus" data-id="${product.id}" type="button" aria-label="Diminuir quantidade">-</button>
+              <span class="qty-val" id="qty-${product.id}">${qty}</span>
+              <button class="qty-btn plus" data-id="${product.id}" type="button" aria-label="Aumentar quantidade">+</button>
+            </div>
           </div>
         </article>
       `;
     })
     .join("");
+}
+
+function updateCartBar() {
+  const cartBar = document.getElementById("cartBar");
+  if (!cartBar) return;
+
+  let totalCount = 0;
+  let totalPrice = 0;
+
+  Object.keys(state.cart).forEach((id) => {
+    const qty = state.cart[id];
+    if (qty > 0) {
+      const product = products.find((p) => p.id === id);
+      if (product) {
+        const priceNum = parseFloat(product.price.replace("R$ ", "").replace(",", "."));
+        totalCount += qty;
+        totalPrice += priceNum * qty;
+      }
+    }
+  });
+
+  if (totalCount > 0) {
+    cartBar.hidden = false;
+    cartBar.classList.add("is-visible");
+
+    const countSpan = document.getElementById("cartCount");
+    const totalSpan = document.getElementById("cartTotal");
+
+    if (countSpan) {
+      countSpan.textContent = `${totalCount} ${totalCount === 1 ? 'item' : 'itens'}`;
+    }
+    if (totalSpan) {
+      totalSpan.textContent = `Total: R$ ${totalPrice.toFixed(2).replace(".", ",")}`;
+    }
+  } else {
+    cartBar.hidden = true;
+    cartBar.classList.remove("is-visible");
+  }
+}
+
+function sendCartToWhatsApp() {
+  let message = "Olá! Gostaria de fazer o seguinte pedido na Doce Benção:\n\n";
+  let hasItems = false;
+  let total = 0;
+
+  const categories = ["Dudu Gourmet", "Dudu Tradicional", "Sobremesas"];
+
+  categories.forEach((cat) => {
+    const catItems = products.filter((p) => p.category === cat && state.cart[p.id] > 0);
+    if (catItems.length > 0) {
+      message += `*${cat}*\n`;
+      catItems.forEach((item) => {
+        const qty = state.cart[item.id];
+        const priceNum = parseFloat(item.price.replace("R$ ", "").replace(",", "."));
+        const subtotal = priceNum * qty;
+        total += subtotal;
+        message += `• ${qty}x ${item.name} (${item.price} cada)\n`;
+      });
+      message += "\n";
+      hasItems = true;
+    }
+  });
+
+  if (!hasItems) return;
+
+  message += `*Total do Pedido*: R$ ${total.toFixed(2).replace(".", ",")}\n\n`;
+  message += "⚠️ *Informação importante*: Não fazemos entregas de forma alguma. O pedido deve ser retirado no endereço:\n";
+  message += "📍 Rua Rocha Pombo, 386 - Bairro Salgado\n";
+  message += "🗺️ Link do mapa: https://maps.app.goo.gl/GDzpngrHon9zdK116\n\n";
+  message += "Por favor, confirme se posso fazer a retirada deste pedido. Obrigado!";
+
+  const url = whatsappUrl(message);
+  window.open(url, "_blank");
+}
+
+function setupCartListeners() {
+  if (productGrid) {
+    productGrid.addEventListener("click", (event) => {
+      const btn = event.target.closest(".qty-btn");
+      if (!btn) return;
+
+      const id = btn.dataset.id;
+      const isPlus = btn.classList.contains("plus");
+
+      if (!state.cart[id]) {
+        state.cart[id] = 0;
+      }
+
+      if (isPlus) {
+        state.cart[id]++;
+      } else {
+        if (state.cart[id] > 0) {
+          state.cart[id]--;
+        }
+      }
+
+      const qtySpan = document.getElementById(`qty-${id}`);
+      if (qtySpan) {
+        qtySpan.textContent = state.cart[id];
+      }
+
+      updateCartBar();
+    });
+  }
+
+  const cartSubmitBtn = document.getElementById("cartSubmitBtn");
+  if (cartSubmitBtn) {
+    cartSubmitBtn.addEventListener("click", sendCartToWhatsApp);
+  }
 }
 
 function configureContactLinks() {
@@ -245,3 +357,5 @@ if (mobileMenu && mobileMenuToggle) {
 
 renderProducts();
 configureContactLinks();
+setupCartListeners();
+updateCartBar();
