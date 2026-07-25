@@ -1,5 +1,5 @@
 {
-  "whatsapp_message_template": "Olá! Gostaria de fazer o seguinte pedido na Doce Benção:\n\n{itens}\n*Total do Pedido*: R$ {total}\n\n⚠️ *Informação importante*: Não fazemos entregas de forma alguma. O pedido deve ser retirado no endereço:\n📍 Rua Rocha Pombo, 386 - Bairro Salgado\n🗺️ Link do mapa: https://maps.app.goo.gl/GDzpngrHon9zdK116\n\nPor favor, confirme se posso fazer a retirada deste pedido. Obrigado!",
+  "whatsapp_message_template": "Olá! Gostaria de fazer o seguinte pedido:\n\n{itens}\n*Total do Pedido*: R$ {total}\n\n *O pedido deve ser retirado no endereço:\n📍 Rua Rocha Pombo, 386 - Bairro Salgado\n \n\nPor favor, confirme se posso separar este pedido. Obrigado!",
   "products": [
     {
       "id": "oreo",
