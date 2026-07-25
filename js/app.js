@@ -15,6 +15,7 @@ const categoryImages = {
 // Dados dinâmicos carregados do JSON
 let products = [];
 let whatsappMessageTemplate = "";
+let whatsappWholesaleMessageTemplate = "";
 
 const state = {
   category: "Todos",
@@ -47,10 +48,12 @@ async function loadProductsJSON() {
     const data = await response.json();
     products = data.products || [];
     whatsappMessageTemplate = data.whatsapp_message_template || "";
+    whatsappWholesaleMessageTemplate = data.whatsapp_wholesale_message_template || "";
 
     // Renderizar e atualizar o carrinho após carregar
     renderProducts();
     updateCartBar();
+    configureContactLinks();
   } catch (err) {
     console.error("Falha ao carregar o cardápio (products.json):", err);
     if (window.location.protocol === "file:") {
@@ -225,8 +228,22 @@ function setupCartListeners() {
 function configureContactLinks() {
   document.querySelectorAll("[data-contact-link]").forEach((link) => {
     const type = link.dataset.contactLink;
-    const message = link.dataset.whatsappMessage || DEFAULT_WHATSAPP_MESSAGE;
-    const url = type === "whatsapp" ? whatsappUrl(message) : CONTACTS[type];
+    if (!type) return;
+
+    let url = "";
+    if (type === "whatsapp") {
+      // Verifica se é um link focado em atacado/revenda
+      const isWholesale = link.dataset.messageType === "wholesale" || 
+                          (link.dataset.whatsappMessage && link.dataset.whatsappMessage.includes("atacado"));
+      
+      const defaultMsg = isWholesale
+        ? (whatsappWholesaleMessageTemplate || link.dataset.whatsappMessage || "Olá! Gostaria de falar sobre atacado e revenda.")
+        : (whatsappMessageTemplate || link.dataset.whatsappMessage || DEFAULT_WHATSAPP_MESSAGE);
+
+      url = whatsappUrl(defaultMsg);
+    } else {
+      url = CONTACTS[type];
+    }
 
     if (!url) return;
 
