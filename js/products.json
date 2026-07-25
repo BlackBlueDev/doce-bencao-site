@@ -1,5 +1,5 @@
 {
-  "whatsapp_message_template": "Olá! Gostaria de fazer o seguinte pedido:\n\n{itens}\n*Total do Pedido*: R$ {total}\n\nO pedido deve ser retirado no endereço:\n📍 Rua Rocha Pombo, 386 - Bairro Salgado\n\n\nPor favor, confirme se posso separar este pedido. Obrigado!",
+  "whatsapp_message_template": "Olá! Gostaria de fazer o seguinte pedido:\n\n{itens}\n*Total do Pedido*: R$ {total}\n\nObrigado!",
   "whatsapp_wholesale_message_template": "Olá! gostaria de consultar valores de atacado e revenda.",
   "products": [
     {
