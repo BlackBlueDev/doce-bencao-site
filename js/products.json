@@ -1,0 +1,140 @@
+{
+  "whatsapp_message_template": "Olá! Gostaria de fazer o seguinte pedido na Doce Benção:\n\n{itens}\n*Total do Pedido*: R$ {total}\n\n⚠️ *Informação importante*: Não fazemos entregas de forma alguma. O pedido deve ser retirado no endereço:\n📍 Rua Rocha Pombo, 386 - Bairro Salgado\n🗺️ Link do mapa: https://maps.app.goo.gl/GDzpngrHon9zdK116\n\nPor favor, confirme se posso fazer a retirada deste pedido. Obrigado!",
+  "products": [
+    {
+      "id": "oreo",
+      "name": "Oreo",
+      "category": "Dudu Gourmet",
+      "description": "Dudu gourmet cremoso com sabor Oreo.",
+      "price": "R$ 4,00",
+      "accent": "blue",
+      "image": "assets/produtos/produto-dudu-gourmet-real.webp"
+    },
+    {
+      "id": "morango-nutella",
+      "name": "Morango com Nutella",
+      "category": "Dudu Gourmet",
+      "description": "Morango com creme e Nutella em uma combinação especial.",
+      "price": "R$ 4,00",
+      "accent": "blue",
+      "image": "assets/produtos/produto-dudu-gourmet-real.webp"
+    },
+    {
+      "id": "ninho-nutella",
+      "name": "Ninho com Nutella",
+      "category": "Dudu Gourmet",
+      "description": "Leite Ninho com Nutella para quem gosta de sabor marcante.",
+      "price": "R$ 4,00",
+      "accent": "blue",
+      "image": "assets/produtos/produto-dudu-gourmet-real.webp"
+    },
+    {
+      "id": "prestigio",
+      "name": "Prestígio",
+      "category": "Dudu Gourmet",
+      "description": "Chocolate com coco em uma versão cremosa e cheia de sabor.",
+      "price": "R$ 4,00",
+      "accent": "blue",
+      "image": "assets/produtos/produto-dudu-gourmet-real.webp"
+    },
+    {
+      "id": "maracuja-nutella",
+      "name": "Maracujá com Nutella",
+      "category": "Dudu Gourmet",
+      "description": "Maracujá com Nutella, doce na medida e bem cremoso.",
+      "price": "R$ 4,00",
+      "accent": "blue",
+      "image": "assets/produtos/produto-dudu-gourmet-real.webp"
+    },
+    {
+      "id": "coco",
+      "name": "Coco",
+      "category": "Dudu Tradicional",
+      "description": "Sabor tradicional leve, cremoso e muito querido.",
+      "price": "R$ 2,50",
+      "accent": "pink",
+      "image": "assets/produtos/produto-dudu-tradicional-real.webp"
+    },
+    {
+      "id": "maracuja",
+      "name": "Maracujá",
+      "category": "Dudu Tradicional",
+      "description": "Dudu tradicional com o toque fresco do maracujá.",
+      "price": "R$ 2,50",
+      "accent": "pink",
+      "image": "assets/produtos/produto-dudu-tradicional-real.webp"
+    },
+    {
+      "id": "amendoim",
+      "name": "Amendoim",
+      "category": "Dudu Tradicional",
+      "description": "Cremoso, encorpado e com sabor de amendoim bem presente.",
+      "price": "R$ 2,50",
+      "accent": "pink",
+      "image": "assets/produtos/produto-dudu-tradicional-real.webp"
+    },
+    {
+      "id": "uva",
+      "name": "Uva",
+      "category": "Dudu Tradicional",
+      "description": "Opção frutada, delicada e refrescante.",
+      "price": "R$ 2,50",
+      "accent": "pink",
+      "image": "assets/produtos/produto-dudu-tradicional-real.webp"
+    },
+    {
+      "id": "chocolate-banana",
+      "name": "Chocolate com Banana",
+      "category": "Dudu Tradicional",
+      "description": "Chocolate e banana em uma dupla familiar e irresistível.",
+      "price": "R$ 2,50",
+      "accent": "pink",
+      "image": "assets/produtos/produto-dudu-tradicional-real.webp"
+    },
+    {
+      "id": "mousse-limao",
+      "name": "Mousse de limão",
+      "category": "Sobremesas",
+      "description": "Mousse leve e cremoso com toque cítrico de limão.",
+      "price": "R$ 4,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "mousse-maracuja",
+      "name": "Mousse de maracujá",
+      "category": "Sobremesas",
+      "description": "Mousse cremoso com o sabor marcante do maracujá.",
+      "price": "R$ 4,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "pave-chocolate-baunilha",
+      "name": "Pavê de chocolate com baunilha",
+      "category": "Sobremesas",
+      "description": "Camadas cremosas de chocolate e baunilha em potinho.",
+      "price": "R$ 4,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "pudim-coco",
+      "name": "Pudim de coco",
+      "category": "Sobremesas",
+      "description": "Pudim cremoso com o sabor delicado do coco.",
+      "price": "R$ 4,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "pudim-leite",
+      "name": "Pudim de leite",
+      "category": "Sobremesas",
+      "description": "Pudim de leite clássico, cremoso e irresistível.",
+      "price": "R$ 4,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    }
+  ]
+}

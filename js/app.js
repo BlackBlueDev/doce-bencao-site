@@ -12,128 +12,9 @@ const categoryImages = {
   Sobremesas: "assets/produtos/produto-sobremesas-reais.webp"
 };
 
-const products = [
-  {
-    id: "oreo",
-    name: "Oreo",
-    category: "Dudu Gourmet",
-    description: "Dudu gourmet cremoso com sabor Oreo.",
-    price: "R$ 4,00",
-    accent: "blue"
-  },
-  {
-    id: "morango-nutella",
-    name: "Morango com Nutella",
-    category: "Dudu Gourmet",
-    description: "Morango com creme e Nutella em uma combinação especial.",
-    price: "R$ 4,00",
-    accent: "blue"
-  },
-  {
-    id: "ninho-nutella",
-    name: "Ninho com Nutella",
-    category: "Dudu Gourmet",
-    description: "Leite Ninho com Nutella para quem gosta de sabor marcante.",
-    price: "R$ 4,00",
-    accent: "blue"
-  },
-  {
-    id: "prestigio",
-    name: "Prestígio",
-    category: "Dudu Gourmet",
-    description: "Chocolate com coco em uma versão cremosa e cheia de sabor.",
-    price: "R$ 4,00",
-    accent: "blue"
-  },
-  {
-    id: "maracuja-nutella",
-    name: "Maracujá com Nutella",
-    category: "Dudu Gourmet",
-    description: "Maracujá com Nutella, doce na medida e bem cremoso.",
-    price: "R$ 4,00",
-    accent: "blue"
-  },
-  {
-    id: "coco",
-    name: "Coco",
-    category: "Dudu Tradicional",
-    description: "Sabor tradicional leve, cremoso e muito querido.",
-    price: "R$ 2,50",
-    accent: "pink"
-  },
-  {
-    id: "maracuja",
-    name: "Maracujá",
-    category: "Dudu Tradicional",
-    description: "Dudu tradicional com o toque fresco do maracujá.",
-    price: "R$ 2,50",
-    accent: "pink"
-  },
-  {
-    id: "amendoim",
-    name: "Amendoim",
-    category: "Dudu Tradicional",
-    description: "Cremoso, encorpado e com sabor de amendoim bem presente.",
-    price: "R$ 2,50",
-    accent: "pink"
-  },
-  {
-    id: "uva",
-    name: "Uva",
-    category: "Dudu Tradicional",
-    description: "Opção frutada, delicada e refrescante.",
-    price: "R$ 2,50",
-    accent: "pink"
-  },
-  {
-    id: "chocolate-banana",
-    name: "Chocolate com Banana",
-    category: "Dudu Tradicional",
-    description: "Chocolate e banana em uma dupla familiar e irresistível.",
-    price: "R$ 2,50",
-    accent: "pink"
-  },
-  {
-    id: "mousse-limao",
-    name: "Mousse de limão",
-    category: "Sobremesas",
-    description: "Mousse leve e cremoso com toque cítrico de limão.",
-    price: "R$ 4,00",
-    accent: "brown"
-  },
-  {
-    id: "mousse-maracuja",
-    name: "Mousse de maracujá",
-    category: "Sobremesas",
-    description: "Mousse cremoso com o sabor marcante do maracujá.",
-    price: "R$ 4,00",
-    accent: "brown"
-  },
-  {
-    id: "pave-chocolate-baunilha",
-    name: "Pavê de chocolate com baunilha",
-    category: "Sobremesas",
-    description: "Camadas cremosas de chocolate e baunilha em potinho.",
-    price: "R$ 4,00",
-    accent: "brown"
-  },
-  {
-    id: "pudim-coco",
-    name: "Pudim de coco",
-    category: "Sobremesas",
-    description: "Pudim cremoso com o sabor delicado do coco.",
-    price: "R$ 4,00",
-    accent: "brown"
-  },
-  {
-    id: "pudim-leite",
-    name: "Pudim de leite",
-    category: "Sobremesas",
-    description: "Pudim de leite clássico, cremoso e irresistível.",
-    price: "R$ 4,00",
-    accent: "brown"
-  }
-];
+// Dados dinâmicos carregados do JSON
+let products = [];
+let whatsappMessageTemplate = "";
 
 const state = {
   category: "Todos",
@@ -159,15 +40,59 @@ function whatsappUrl(message = DEFAULT_WHATSAPP_MESSAGE) {
   return base.toString();
 }
 
+async function loadProductsJSON() {
+  try {
+    const response = await fetch("js/products.json");
+    if (!response.ok) throw new Error("Erro ao carregar o arquivo JSON.");
+    const data = await response.json();
+    products = data.products || [];
+    whatsappMessageTemplate = data.whatsapp_message_template || "";
+
+    // Renderizar e atualizar o carrinho após carregar
+    renderProducts();
+    updateCartBar();
+  } catch (err) {
+    console.error("Falha ao carregar o cardápio (products.json):", err);
+    if (window.location.protocol === "file:") {
+      showLocalWarning();
+    }
+  }
+}
+
+function showLocalWarning() {
+  const warning = document.createElement("div");
+  warning.style.cssText = `
+    background: #ffcc00;
+    color: #2d170e;
+    padding: 12px 18px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 0.9rem;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    border-bottom: 2px solid #e6b800;
+    font-family: sans-serif;
+    line-height: 1.4;
+  `;
+  warning.innerHTML = `
+    ⚠️ <strong>Aviso Local:</strong> Para visualizar o cardápio editável (<code>products.json</code>) no seu computador, o site precisa rodar sob um servidor local.
+    <br>Caso queira testar agora, execute <code>npx http-server</code> no terminal da pasta do projeto e abra o endereço fornecido.
+    <br><em>(Observação: Quando você publicar o site na internet pelo Netlify ou GitHub, ele funcionará 100% de forma automática!)</em>
+  `;
+  document.body.prepend(warning);
+}
+
 function renderProducts() {
   if (!productGrid) return;
 
   productGrid.innerHTML = currentProducts()
     .map((product) => {
       const qty = state.cart[product.id] || 0;
+      const imgUrl = product.image || categoryImages[product.category];
       return `
         <article class="product-card ${product.accent}">
-          <img src="${categoryImages[product.category]}" alt="${product.name} - ${product.category}" loading="lazy">
+          <img src="${imgUrl}" alt="${product.name} - ${product.category}" loading="lazy">
           <div class="product-body">
             <div class="product-topline">
               <span class="product-category">${product.category}</span>
@@ -226,37 +151,38 @@ function updateCartBar() {
 }
 
 function sendCartToWhatsApp() {
-  let message = "Olá! Gostaria de fazer o seguinte pedido na Doce Benção:\n\n";
-  let hasItems = false;
+  if (!products.length || !whatsappMessageTemplate) return;
+
+  let itemsText = "";
   let total = 0;
+  let hasItems = false;
 
   const categories = ["Dudu Gourmet", "Dudu Tradicional", "Sobremesas"];
 
   categories.forEach((cat) => {
     const catItems = products.filter((p) => p.category === cat && state.cart[p.id] > 0);
     if (catItems.length > 0) {
-      message += `*${cat}*\n`;
+      itemsText += `*${cat}*\n`;
       catItems.forEach((item) => {
         const qty = state.cart[item.id];
         const priceNum = parseFloat(item.price.replace("R$ ", "").replace(",", "."));
         const subtotal = priceNum * qty;
         total += subtotal;
-        message += `• ${qty}x ${item.name} (${item.price} cada)\n`;
+        itemsText += `• ${qty}x ${item.name} (${item.price} cada)\n`;
       });
-      message += "\n";
+      itemsText += "\n";
       hasItems = true;
     }
   });
 
   if (!hasItems) return;
 
-  message += `*Total do Pedido*: R$ ${total.toFixed(2).replace(".", ",")}\n\n`;
-  message += "⚠️ *Informação importante*: Não fazemos entregas de forma alguma. O pedido deve ser retirado no endereço:\n";
-  message += "📍 Rua Rocha Pombo, 386 - Bairro Salgado\n";
-  message += "🗺️ Link do mapa: https://maps.app.goo.gl/GDzpngrHon9zdK116\n\n";
-  message += "Por favor, confirme se posso fazer a retirada deste pedido. Obrigado!";
+  const totalStr = total.toFixed(2).replace(".", ",");
+  const finalMessage = whatsappMessageTemplate
+    .replace("{itens}", itemsText)
+    .replace("{total}", totalStr);
 
-  const url = whatsappUrl(message);
+  const url = whatsappUrl(finalMessage);
   window.open(url, "_blank");
 }
 
@@ -355,7 +281,7 @@ if (mobileMenu && mobileMenuToggle) {
   });
 }
 
-renderProducts();
+// Inicialização
 configureContactLinks();
 setupCartListeners();
-updateCartBar();
+loadProductsJSON();
