@@ -18,7 +18,7 @@
     >
     <link rel="stylesheet" href="css/styles.css">
   </head>
-  <body>
+  <body data-page="wholesale">
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="index.html" aria-label="Voltar para Doce Benção">
@@ -104,41 +104,13 @@
             <p>Consulte quantidades, sabores disponíveis e condições diretamente pelo WhatsApp.</p>
           </div>
 
-          <div class="wholesale-grid">
-            <article class="wholesale-card blue">
-              <span>Dudu Gourmet</span>
-              <strong>R$ 3,00</strong>
-              <ul>
-                <li>Oreo</li>
-                <li>Morango com Nutella</li>
-                <li>Ninho com Nutella</li>
-                <li>Prestígio</li>
-                <li>Maracujá com Nutella</li>
-              </ul>
-            </article>
-            <article class="wholesale-card pink">
-              <span>Dudu Tradicional</span>
-              <strong>R$ 1,50</strong>
-              <ul>
-                <li>Coco</li>
-                <li>Maracujá</li>
-                <li>Amendoim</li>
-                <li>Uva</li>
-                <li>Chocolate com Banana</li>
-              </ul>
-            </article>
-            <article class="wholesale-card brown">
-              <span>Sobremesas</span>
-              <strong>R$ 3,00</strong>
-              <ul>
-                <li>Mousse de limão</li>
-                <li>Mousse de maracujá</li>
-                <li>Pavê de chocolate com baunilha</li>
-                <li>Pudim de coco</li>
-                <li>Pudim de leite</li>
-              </ul>
-            </article>
+          <div class="menu-tabs" role="tablist" aria-label="Filtrar cardápio por categoria">
+            <button class="tab is-active" type="button" data-category="Todos">Todos</button>
+            <button class="tab" type="button" data-category="Dudu Gourmet">Dudu Gourmet</button>
+            <button class="tab" type="button" data-category="Dudu Tradicional">Dudu Tradicional</button>
+            <button class="tab" type="button" data-category="Sobremesas">Sobremesas</button>
           </div>
+          <div class="product-grid" id="productGrid" aria-live="polite"></div>
 
           <div class="wholesale-contact">
             <div>
@@ -168,6 +140,19 @@
       </div>
       <small>© 2026 Doce Benção. Todos os direitos reservados.</small>
     </footer>
+
+    <!-- Floating Cart Bar -->
+    <div class="cart-floating-bar" id="cartBar" hidden>
+      <div class="cart-bar-inner">
+        <div class="cart-bar-info">
+          <span class="cart-count" id="cartCount">0 itens</span>
+          <span class="cart-total" id="cartTotal">R$ 0,00</span>
+        </div>
+        <button class="button whatsapp cart-submit-btn" id="cartSubmitBtn" type="button">
+          🛒 Enviar Pedido (Atacado)
+        </button>
+      </div>
+    </div>
 
     <script src="js/app.js"></script>
   </body>

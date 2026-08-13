@@ -1,6 +1,6 @@
 {
   "whatsapp_message_template": "Olá! Gostaria de fazer o seguinte pedido:\n\n{itens}\n*Total do Pedido*: R$ {total}\n\nObrigado!",
-  "whatsapp_wholesale_message_template": "Olá! gostaria de consultar valores de atacado e revenda.",
+  "whatsapp_wholesale_message_template": "Olá! Vim pelo site da Doce Benção e gostaria de consultar valores de atacado e revenda.\n\nGostaria de fazer o seguinte pedido em atacado:\n\n{itens}\n*Total Estimado*: R$ {total}\n\nObrigado!",
   "products": [
     {
       "id": "oreo",
@@ -8,6 +8,7 @@
       "category": "Dudu Gourmet",
       "description": "Dudu gourmet cremoso com sabor Oreo.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "blue",
       "image": "assets/produtos/produto-dudu-gourmet-real.webp"
     },
@@ -17,6 +18,7 @@
       "category": "Dudu Gourmet",
       "description": "Morango com creme e Nutella em uma combinação especial.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "blue",
       "image": "assets/produtos/produto-dudu-gourmet-real.webp"
     },
@@ -26,6 +28,7 @@
       "category": "Dudu Gourmet",
       "description": "Leite Ninho com Nutella para quem gosta de sabor marcante.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "blue",
       "image": "assets/produtos/produto-dudu-gourmet-real.webp"
     },
@@ -35,6 +38,7 @@
       "category": "Dudu Gourmet",
       "description": "Chocolate com coco em uma versão cremosa e cheia de sabor.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "blue",
       "image": "assets/produtos/produto-dudu-gourmet-real.webp"
     },
@@ -44,6 +48,7 @@
       "category": "Dudu Gourmet",
       "description": "Maracujá com Nutella, doce na medida e bem cremoso.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "blue",
       "image": "assets/produtos/produto-dudu-gourmet-real.webp"
     },
@@ -53,6 +58,7 @@
       "category": "Dudu Tradicional",
       "description": "Sabor tradicional leve, cremoso e muito querido.",
       "price": "R$ 2,50",
+      "wholesalePrice": "R$ 1,50",
       "accent": "pink",
       "image": "assets/produtos/produto-dudu-tradicional-real.webp"
     },
@@ -62,6 +68,7 @@
       "category": "Dudu Tradicional",
       "description": "Dudu tradicional com o toque fresco do maracujá.",
       "price": "R$ 2,50",
+      "wholesalePrice": "R$ 1,50",
       "accent": "pink",
       "image": "assets/produtos/produto-dudu-tradicional-real.webp"
     },
@@ -71,6 +78,7 @@
       "category": "Dudu Tradicional",
       "description": "Cremoso, encorpado e com sabor de amendoim bem presente.",
       "price": "R$ 2,50",
+      "wholesalePrice": "R$ 1,50",
       "accent": "pink",
       "image": "assets/produtos/produto-dudu-tradicional-real.webp"
     },
@@ -80,6 +88,7 @@
       "category": "Dudu Tradicional",
       "description": "Opção frutada, delicada e refrescante.",
       "price": "R$ 2,50",
+      "wholesalePrice": "R$ 1,50",
       "accent": "pink",
       "image": "assets/produtos/produto-dudu-tradicional-real.webp"
     },
@@ -89,6 +98,7 @@
       "category": "Dudu Tradicional",
       "description": "Chocolate e banana em uma dupla familiar e irresistível.",
       "price": "R$ 2,50",
+      "wholesalePrice": "R$ 1,50",
       "accent": "pink",
       "image": "assets/produtos/produto-dudu-tradicional-real.webp"
     },
@@ -98,6 +108,7 @@
       "category": "Sobremesas",
       "description": "Mousse leve e cremoso com toque cítrico de limão.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "brown",
       "image": "assets/produtos/produto-sobremesas-reais.webp"
     },
@@ -107,6 +118,7 @@
       "category": "Sobremesas",
       "description": "Mousse cremoso com o sabor marcante do maracujá.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "brown",
       "image": "assets/produtos/produto-sobremesas-reais.webp"
     },
@@ -116,6 +128,7 @@
       "category": "Sobremesas",
       "description": "Camadas cremosas de chocolate e baunilha em potinho.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "brown",
       "image": "assets/produtos/produto-sobremesas-reais.webp"
     },
@@ -125,6 +138,7 @@
       "category": "Sobremesas",
       "description": "Pudim cremoso com o sabor delicado do coco.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "brown",
       "image": "assets/produtos/produto-sobremesas-reais.webp"
     },
@@ -134,6 +148,77 @@
       "category": "Sobremesas",
       "description": "Pudim de leite clássico, cremoso e irresistível.",
       "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "pudim-limao",
+      "name": "Pudim de limão",
+      "category": "Sobremesas",
+      "description": "Pudim cremoso com toque cítrico de limão.",
+      "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "pudim-chocolate",
+      "name": "Pudim de chocolate",
+      "category": "Sobremesas",
+      "description": "Pudim de chocolate super cremoso e delicioso.",
+      "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "pave-chocolate",
+      "name": "Pavê de chocolate",
+      "category": "Sobremesas",
+      "description": "Pavê tradicional com camadas generosas de chocolate.",
+      "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "pave-beijinho",
+      "name": "Pavê de Beijinho",
+      "category": "Sobremesas",
+      "description": "Pavê sabor beijinho com coco ralado.",
+      "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "mousse-pacoca",
+      "name": "Mousse de paçoca",
+      "category": "Sobremesas",
+      "description": "Mousse cremoso com sabor irresistível de paçoca.",
+      "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "mousse-leite-avela",
+      "name": "Mousse de leite e avelã",
+      "category": "Sobremesas",
+      "description": "Mousse que une o sabor suave do leite com avelã.",
+      "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
+      "accent": "brown",
+      "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "creme-goiaba",
+      "name": "Creme de goiaba",
+      "category": "Sobremesas",
+      "description": "Creme delicioso e aveludado com sabor de goiaba.",
+      "price": "R$ 4,00",
+      "wholesalePrice": "R$ 3,00",
       "accent": "brown",
       "image": "assets/produtos/produto-sobremesas-reais.webp"
     }

@@ -22,6 +22,8 @@ const state = {
   cart: {} // productId: quantity
 };
 
+const isWholesalePage = document.body.dataset.page === "wholesale";
+
 const productGrid = document.querySelector("#productGrid");
 const tabs = document.querySelectorAll(".tab");
 const mobileMenuToggle = document.querySelector("[data-mobile-menu-toggle]");
@@ -99,7 +101,7 @@ function renderProducts() {
           <div class="product-body">
             <div class="product-topline">
               <span class="product-category">${product.category}</span>
-              <strong>${product.price}</strong>
+              <strong>${isWholesalePage ? product.wholesalePrice : product.price}</strong>
             </div>
             <h3>${product.name}</h3>
             <p>${product.description}</p>
@@ -127,7 +129,8 @@ function updateCartBar() {
     if (qty > 0) {
       const product = products.find((p) => p.id === id);
       if (product) {
-        const priceNum = parseFloat(product.price.replace("R$ ", "").replace(",", "."));
+        const activePrice = isWholesalePage ? product.wholesalePrice : product.price;
+        const priceNum = parseFloat(activePrice.replace("R$ ", "").replace(",", "."));
         totalCount += qty;
         totalPrice += priceNum * qty;
       }
@@ -168,10 +171,11 @@ function sendCartToWhatsApp() {
       itemsText += `*${cat}*\n`;
       catItems.forEach((item) => {
         const qty = state.cart[item.id];
-        const priceNum = parseFloat(item.price.replace("R$ ", "").replace(",", "."));
+        const activePrice = isWholesalePage ? item.wholesalePrice : item.price;
+        const priceNum = parseFloat(activePrice.replace("R$ ", "").replace(",", "."));
         const subtotal = priceNum * qty;
         total += subtotal;
-        itemsText += `• ${qty}x ${item.name} (${item.price} cada)\n`;
+        itemsText += `• ${qty}x ${item.name} (${activePrice} cada)\n`;
       });
       itemsText += "\n";
       hasItems = true;
@@ -181,7 +185,8 @@ function sendCartToWhatsApp() {
   if (!hasItems) return;
 
   const totalStr = total.toFixed(2).replace(".", ",");
-  const finalMessage = whatsappMessageTemplate
+  const templateToUse = isWholesalePage ? whatsappWholesaleMessageTemplate : whatsappMessageTemplate;
+  const finalMessage = templateToUse
     .replace("{itens}", itemsText)
     .replace("{total}", totalStr);
 
