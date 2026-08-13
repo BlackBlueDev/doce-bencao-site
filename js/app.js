@@ -184,6 +184,11 @@ function sendCartToWhatsApp() {
 
   if (!hasItems) return;
 
+  if (isWholesalePage && total < 30) {
+    alert("O valor mínimo para pedidos no atacado é de R$ 30,00. Por favor, adicione mais itens ao carrinho.");
+    return;
+  }
+
   const totalStr = total.toFixed(2).replace(".", ",");
   const templateToUse = isWholesalePage ? whatsappWholesaleMessageTemplate : whatsappMessageTemplate;
   const finalMessage = templateToUse
