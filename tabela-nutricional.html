@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doce Benção | Tabela Nutricional</title>
+    <meta name="theme-color" content="#e91e63">
+    <link rel="icon" href="assets/logos/logo-doce-bencao.webp" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+      .nutritional-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: white;
+        box-shadow: var(--shadow);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .nutritional-table th, .nutritional-table td {
+        padding: 12px 15px;
+        text-align: right;
+        border-bottom: 1px solid var(--line);
+      }
+      .nutritional-table th:first-child, .nutritional-table td:first-child {
+        text-align: left;
+      }
+      .nutritional-table th {
+        background-color: var(--brown);
+        color: white;
+        font-weight: 800;
+        font-size: 0.9rem;
+      }
+      .nutritional-table tbody tr:last-child td {
+        border-bottom: none;
+      }
+      .nutritional-table tbody tr:hover {
+        background-color: var(--cream-soft);
+      }
+      .back-btn {
+        display: inline-block;
+        margin-bottom: 20px;
+        color: var(--pink);
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html" aria-label="Voltar para Doce Benção">
+          <img src="assets/logos/logo-doce-bencao.webp" alt="Doce Benção">
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section menu-section">
+        <div class="section-inner">
+          <a href="index.html" class="back-btn">&larr; Voltar ao Cardápio</a>
+          <div class="section-head">
+            <p class="eyebrow">Informação</p>
+            <h2>Tabela Nutricional</h2>
+            <p>Comparativo completo por porção unitária.</p>
+          </div>
+          
+          <div style="overflow-x: auto;">
+            <table class="nutritional-table">
+              <thead>
+                <tr>
+                  <th>Receita / Produto</th>
+                  <th>Peso Porção (g)</th>
+                  <th>Energia (kcal)</th>
+                  <th>Carboidratos (g)</th>
+                  <th>Açúcares Adic. (g)</th>
+                  <th>Proteínas (g)</th>
+                  <th>Gorduras Tot. (g)</th>
+                  <th>Gorduras Sat. (g)</th>
+                  <th>Fibras (g)</th>
+                  <th>Sódio (mg)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Dudu Tradicional Maracujá</td>
+                  <td>160</td>
+                  <td>127</td>
+                  <td>28,4</td>
+                  <td>25,0</td>
+                  <td>1,1</td>
+                  <td>1,2</td>
+                  <td>0,8</td>
+                  <td>0,1</td>
+                  <td>18</td>
+                </tr>
+                <tr>
+                  <td>Dudu Gourmet Maracujá c/ chocolate</td>
+                  <td>80</td>
+                  <td>236</td>
+                  <td>31,4</td>
+                  <td>23,3</td>
+                  <td>3,7</td>
+                  <td>11,1</td>
+                  <td>6,9</td>
+                  <td>0,6</td>
+                  <td>58</td>
+                </tr>
+                <tr>
+                  <td>Dudu Gourmet Ninho c/ chocolate</td>
+                  <td>80</td>
+                  <td>257</td>
+                  <td>32,3</td>
+                  <td>23,3</td>
+                  <td>4,9</td>
+                  <td>12,5</td>
+                  <td>7,7</td>
+                  <td>0,5</td>
+                  <td>75</td>
+                </tr>
+                <tr>
+                  <td>Dudu Gourmet Prestígio c/ chocolate</td>
+                  <td>90</td>
+                  <td>277</td>
+                  <td>31,3</td>
+                  <td>23,3</td>
+                  <td>4,0</td>
+                  <td>15,7</td>
+                  <td>11,0</td>
+                  <td>1,2</td>
+                  <td>59</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -9,6 +9,7 @@ const DEFAULT_WHATSAPP_MESSAGE =
 const categoryImages = {
   "Dudu Gourmet": "assets/produtos/produto-dudu-gourmet-real.webp",
   "Dudu Tradicional": "assets/produtos/produto-dudu-tradicional-real.webp",
+  "Pudim": "assets/produtos/produto-sobremesas-reais.webp",
   Sobremesas: "assets/produtos/produto-sobremesas-reais.webp"
 };
 
@@ -163,7 +164,7 @@ function sendCartToWhatsApp() {
   let total = 0;
   let hasItems = false;
 
-  const categories = ["Dudu Gourmet", "Dudu Tradicional", "Sobremesas"];
+  const categories = ["Dudu Gourmet", "Dudu Tradicional", "Pudim", "Sobremesas"];
 
   categories.forEach((cat) => {
     const catItems = products.filter((p) => p.category === cat && state.cart[p.id] > 0);
