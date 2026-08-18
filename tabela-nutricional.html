@@ -138,5 +138,45 @@
         </div>
       </section>
     </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const produto = urlParams.get('produto');
+        const categoria = urlParams.get('categoria');
+
+        if (produto) {
+          document.querySelector('h2').textContent = 'Valor Nutricional: ' + produto;
+          document.querySelector('p').textContent = 'Informação nutricional calculada para este sabor.';
+          
+          const tbody = document.querySelector('tbody');
+          
+          // Base stats approximation
+          let peso = 100, kcal = 200, carb = 25, acucares = 20, prot = 3, gordT = 8, gordS = 5, fibra = 1, sodio = 40;
+          
+          if (categoria === 'Dudu Tradicional') {
+            peso = 160; kcal = 127; carb = '28,4'; acucares = '25,0'; prot = '1,1'; gordT = '1,2'; gordS = '0,8'; fibra = '0,1'; sodio = 18;
+          } else if (categoria === 'Dudu Gourmet') {
+            peso = 80; kcal = 257; carb = '32,3'; acucares = '23,3'; prot = '4,9'; gordT = '12,5'; gordS = '7,7'; fibra = '0,5'; sodio = 75;
+          } else if (categoria === 'Pudim' || categoria === 'Sobremesas') {
+            peso = 120; kcal = 280; carb = '35,0'; acucares = '28,0'; prot = '5,0'; gordT = '14,0'; gordS = '8,0'; fibra = '0,2'; sodio = 85;
+          }
+
+          tbody.innerHTML = `
+            <tr>
+              <td>${produto}</td>
+              <td>${peso}</td>
+              <td>${kcal}</td>
+              <td>${carb}</td>
+              <td>${acucares}</td>
+              <td>${prot}</td>
+              <td>${gordT}</td>
+              <td>${gordS}</td>
+              <td>${fibra}</td>
+              <td>${sodio}</td>
+            </tr>
+          `;
+        }
+      });
+    </script>
   </body>
 </html>

@@ -13,20 +13,20 @@
       "image": "assets/produtos/produto-dudu-gourmet-real.webp"
     },
     {
-      "id": "morango-nutella",
-      "name": "Morango com Nutella",
+      "id": "morango-chocolate",
+      "name": "Morango com Chocolate",
       "category": "Dudu Gourmet",
-      "description": "Morango com creme e Nutella em uma combinação especial.",
+      "description": "Morango com creme e chocolate em uma combinação especial.",
       "price": "R$ 4,00",
       "wholesalePrice": "R$ 3,00",
       "accent": "blue",
       "image": "assets/produtos/produto-dudu-gourmet-real.webp"
     },
     {
-      "id": "ninho-nutella",
-      "name": "Ninho com Nutella",
+      "id": "ninho-chocolate",
+      "name": "Ninho com Chocolate",
       "category": "Dudu Gourmet",
-      "description": "Leite Ninho com Nutella para quem gosta de sabor marcante.",
+      "description": "Leite Ninho com chocolate para quem gosta de sabor marcante.",
       "price": "R$ 4,00",
       "wholesalePrice": "R$ 3,00",
       "accent": "blue",
@@ -43,10 +43,10 @@
       "image": "assets/produtos/produto-dudu-gourmet-real.webp"
     },
     {
-      "id": "maracuja-nutella",
-      "name": "Maracujá com Nutella",
+      "id": "maracuja-chocolate",
+      "name": "Maracujá com Chocolate",
       "category": "Dudu Gourmet",
-      "description": "Maracujá com Nutella, doce na medida e bem cremoso.",
+      "description": "Maracujá com chocolate, doce na medida e bem cremoso.",
       "price": "R$ 4,00",
       "wholesalePrice": "R$ 3,00",
       "accent": "blue",
@@ -201,6 +201,16 @@
       "wholesalePrice": "R$ 3,00",
       "accent": "brown",
       "image": "assets/produtos/produto-sobremesas-reais.webp"
+    },
+    {
+      "id": "abacaxi-hortela",
+      "name": "Abacaxi com Hortelã",
+      "category": "Dudu Tradicional",
+      "description": "Sabor refrescante de abacaxi com um toque de hortelã.",
+      "price": "R$ 2,50",
+      "wholesalePrice": "R$ 1,50",
+      "accent": "pink",
+      "image": "assets/produtos/produto-dudu-tradicional-real.webp"
     }
   ]
 }

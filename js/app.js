@@ -111,6 +111,7 @@ function renderProducts() {
               <span class="qty-val" id="qty-${product.id}">${qty}</span>
               <button class="qty-btn plus" data-id="${product.id}" type="button" aria-label="Aumentar quantidade">+</button>
             </div>
+            <a href="tabela-nutricional.html?produto=${encodeURIComponent(product.name)}&categoria=${encodeURIComponent(product.category)}" class="consult-link nutri-btn" target="_blank" style="margin-top: 12px; width: 100%; text-align: center; border-radius: 999px; display: block; font-size: 0.85rem; padding: 8px;">Tabela Nutricional</a>
           </div>
         </article>
       `;
